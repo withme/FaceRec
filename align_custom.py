@@ -16,7 +16,7 @@ import numpy as np
 class AlignCustom(object):
     def __init__(self):
         pass
-    
+
     def getPos(self, points):
         if abs(points[0] - points[2]) / abs(points[1] - points[2]) > 2:
             return "Right";
@@ -159,4 +159,4 @@ class AlignCustom(object):
         rot_mat[1][2] += ey
 
         chips = cv2.warpAffine(img, rot_mat, (desired_size, desired_size))
-        return chips, self.getPos(landmarks)
+        return chips, rot_mat, self.getPos(landmarks)
